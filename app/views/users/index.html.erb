@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+<%= form_tag(users_filter_path, method: :get, id: 'filter-form') do %>
+  <div class="field">
+    <%= label_tag 'campaign_names', 'Filter Users by Campaign Names:' %>
+    <%= text_field_tag 'campaign_names', params[:campaign_names], placeholder: 'Enter comma-separated values' %>
+  </div>
+  <%= button_tag 'Filter', type: 'button', id: 'filter-button' %>
+  <%= link_to 'Clear Filter', root_path %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Campaigns list</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.campaigns_list %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add New User', new_user_path %>
+
+<script>
+  document.getElementById('filter-button').addEventListener('click', function() {
+    var form = document.getElementById('filter-form');
+    form.submit();
+  });
+</script>
