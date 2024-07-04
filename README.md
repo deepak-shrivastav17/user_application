@@ -9,7 +9,7 @@ Make sure you have the following installed:
 - [Ruby 2.6.4](https://www.ruby-lang.org/en/downloads/)
 - [Rails 6.1.7](https://guides.rubyonrails.org/v6.1/getting_started.html)
 - [MySQL](https://dev.mysql.com/downloads/mysql/)
-- [Bundler](https://bundler.io/)
+- [Bundler 2.4.22](https://bundler.io/)
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/)
 
 ## Getting Started
