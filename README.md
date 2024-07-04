@@ -1,24 +1,71 @@
-# README
+# User Campaign Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails application that uses MySQL as the database. Follow the instructions below to set up and run the application on your local machine.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+Make sure you have the following installed:
 
-* System dependencies
+- [Ruby 2.6.4](https://www.ruby-lang.org/en/downloads/)
+- [Rails 6.1.7](https://guides.rubyonrails.org/v6.1/getting_started.html)
+- [MySQL](https://dev.mysql.com/downloads/mysql/)
+- [Bundler](https://bundler.io/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/)
 
-* Configuration
+## Getting Started
 
-* Database creation
+1. **Clone the repository:**
 
-* Database initialization
+   ```bash
+   git clone https://github.com/deepak-shrivastav17/user_application.git
+   cd user_application
+   ```
 
-* How to run the test suite
+2. **Install dependencies:**
 
-* Services (job queues, cache servers, search engines, etc.)
+   ```bash
+   bundle install
+   ```
 
-* Deployment instructions
+3. **Configure the database:**
 
-* ...
+   Make sure MySQL is running on your local machine. Update the `config/database.yml` file with your MySQL configuration if needed. The default configuration is as follows:
+
+   ```yaml
+   default: &default
+     adapter: mysql2
+     encoding: utf8mb4
+     pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+     username: root
+     password:
+     socket: /var/run/mysqld/mysqld.sock
+
+   development:
+     <<: *default
+     database: user_campaign_application
+
+   test:
+     <<: *default
+     database: user_campaign_test
+
+   production:
+     <<: *default
+     database: user_campaign_production
+     username: user_campaign
+     password: <%= ENV['USER_CAMPAIGN_DATABASE_PASSWORD'] %>
+   ```
+
+4. **Create and migrate the database:**
+
+   ```bash
+   rails db:create
+   rails db:migrate
+   ```
+
+5. **Run the Rails server:**
+
+   ```bash
+   rails server
+   ```
+
+   The application should now be running on [http://localhost:3000](http://localhost:3000).
